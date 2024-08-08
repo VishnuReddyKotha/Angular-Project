@@ -1,0 +1,29 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="off">
+    <input type="hidden" name="id" [value]="service.formData.id">
+    <div class="mb-3">
+        <label>Book Title</label>
+        <input class="form-control form-control-lg" placeholder="Name of Book" #title="ngModel"
+        name="title" [(ngModel)]="service.formData.title" required>
+    </div>
+    <div class="mb-3">
+        <label>Author</label>
+        <input class="form-control form-control-lg" placeholder="Author Name" #author="ngModel"
+         name="author" [(ngModel)]="service.formData.author" required>
+    </div>
+    <div class="mb-3">
+        <label>Isbn</label>
+        <input class="form-control form-control-lg" placeholder="13 Digit Unique Number" #isbn="ngModel"
+         name="isbn" [(ngModel)]="service.formData.isbn" required minlength="13" maxlength="13">
+    </div>
+    <div class="mb-3">
+        <label>Date Published ( YYYY-MM-DD )</label>
+        <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #publishedDate="ngModel" name="publishedDate"
+            [(ngModel)]="service.formData.publishedDate" required minlength="10" maxlength="10">
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit"> Add Book</button>
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg" (click)="resetPage(form)">Reset</button>
+    </div>
+</form>

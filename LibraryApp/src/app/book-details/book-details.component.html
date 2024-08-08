@@ -1,0 +1,25 @@
+<div class="bg-body-secondary text-center py-5 rounded-2">
+    <h1 class="dispay-6 fw-bold">Library Application</h1>
+</div>
+<div class="row mt-5">
+    <div class="col-6">
+        <app-book-detail-form></app-book-detail-form>
+    </div>
+    <div class="col-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-start mb-2 border px-4 py-3 rounded-3"
+             *ngFor = " let bd of service.list">
+             <div class="flex-grow-1 mouse-hover" (click)="populateForm(bd)">
+                <div class="fw-bold">Id: {{bd.id}}</div>
+                <div>Title: {{bd.title}}</div>
+                <div class="fw-bold"> Author: {{bd.author}}</div>
+                <div>Isbn: {{bd.isbn}}</div>
+                <div class="fw-bold">Date: {{bd.publishedDate}}</div>
+             </div> 
+               <span class=""text-secondary>
+                <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(bd.id)"></i>
+               </span>           
+            </li>
+        </ul>
+    </div>
+</div>
