@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookDetailFormComponent } from './book-details/book-detail-form/book-detail-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpInterceptorService } from './interceptors/http.service';
 
 
 @NgModule({
@@ -25,7 +26,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

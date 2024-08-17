@@ -31,9 +31,11 @@ export class BookDetailFormComponent {
       this.service.list = res as BookDetail[]
       this.service.resetForm(form)
       this.toastr.success('Inserted successfully', 'Library Application')
+      this.service.refreshList();
      },
      error: err => {console.log(err)}
    })
+   this.service.refreshList();
   }
 
   updateRecord(form: NgForm)
